@@ -28,5 +28,8 @@ pipeline {
                 }
             }
         }
+        stage("nexus"){
+         nexusArtifactUploader artifacts: [[artifactId: 'CardApplication', classifier: '', file: 'CardApplication.war', type: '.war']], credentialsId: 'jenkins', groupId: 'CarApp', nexusUrl: '18.222.154.19', nexusVersion: 'nexus3', protocol: 'http', repository: 'webapp', version: '1.0-SNAPSHOT'
+        }
     }
 }
